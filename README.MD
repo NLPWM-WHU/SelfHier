@@ -10,7 +10,7 @@ We present **SelfHier**, which utilizes the **Self**-verification and **Hier**ar
 ## Training SelfHier
 To reproduce our results or extend SelfHier model to more datasets, we provide a detailed description as follow:
 
-1、go `data/` folder, generate mapping files by running:
+1、Go `data/` folder, generate mapping files by running:
 ```
 python utils.py --dataset NELL23K --gen-mapping --gen-eval-data
 ```
@@ -22,23 +22,23 @@ We provide a convenient script `run.sh` under `AnyBURL/` for mining and filterin
 python utils.py --dataset NELL23K --gen-train-data --num 6 --out 6_rev_rule --max-len 3 --rule
 ```
 
-3、go `data/NELL23K/` folder, generate the type_constrain.txt
+3、Go `data/NELL23K/` folder, generate the type_constrain.txt
 ```
 python n-n.py
 ```
-4、go `OpenKE-OpenKE-PyTorch/openke` folder
+4、Go `OpenKE-OpenKE-PyTorch/openke` folder
 ```
 bash make.sh
 ```
-5、go `OpenKE-OpenKE-PyTorch` folder, training embedding
+5、Go `OpenKE-OpenKE-PyTorch` folder, training embedding
 ```
 python train_transe_NELL23K.py
 ```
-6、go `SelfHier-main/` folder
+6、Go `SelfHier-main/` folder
 ```
 python process_hierarchical_guidance --datapath 'data/NELL23K/'
 ```
-7、training SlefHier
+7、Train SlefHier
 ```
 python train.py --cuda 0 --dataset NELL23K --batch-size 1024 --lr 5e-4 --dropout 0.1 --eval-begin 50 --num-epoch 50 --save-dir "model_4" --label-smooth 0.25 --encoder --save-interval 50 --l-punish --trainset "6_rev_rule" --prob 0.15 --beam-size 512 --test-batch-size 4
 ```
