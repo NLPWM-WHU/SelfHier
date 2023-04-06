@@ -10,7 +10,7 @@ We present **SelfHier**, which utilizes the **Self**-verification and **Hier**ar
 ## Training SelfHier
 To reproduce our results or extend SelfHier model to more datasets, we provide a detailed description as follow:
 
-1、Generating mapping files by running:
+1、go `data/` folder, generate mapping files by running:
 ```
 python utils.py --dataset NELL23K --gen-mapping --gen-eval-data
 ```
