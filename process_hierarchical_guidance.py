@@ -202,7 +202,7 @@ def set_pre_args():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--K', default=50, type=int)
 	parser.add_argument('--R', default=3, type=int)
-	parser.add_argument('--datapath', default='data/FB15K237/', type=str)
+	parser.add_argument('--datapath', default='data/NELL23K/', type=str)
 	args = parser.parse_args()
 	return args
 

@@ -73,7 +73,7 @@ def preprocess_for_newdata(datapath, new_datas):
             fin.write(line+ '\n')
 
 def filter_threshold(datapath, a):
-    with open(datapath + '/new_dict_new.json', 'r') as f:
+    with open(datapath + '/new_dict.json', 'r') as f:
         new_dict = json.load(f)
     new_datas = []
     for key,value in new_dict.items():
@@ -83,7 +83,7 @@ def filter_threshold(datapath, a):
 
 def set_pre_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--datapath', default='data/NELL995', type=str)
+    parser.add_argument('--datapath', default='data/NELL23K', type=str)
     parser.add_argument('--a', default=1, type=int)
     args = parser.parse_args()
     return args
@@ -91,9 +91,5 @@ def set_pre_args():
 if __name__ == '__main__':
     args = set_pre_args()
     new_datas = filter_threshold(args.datapath, args.a)
-    # new_datas = []
-    # with open('./data/FB15K237-20/new2.txt', 'r') as f:
-    #     for line in f:
-    #         new_datas.append(line.strip())
     preprocess_for_newdata(args.datapath, new_datas)
 
