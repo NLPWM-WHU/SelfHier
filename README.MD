@@ -1,9 +1,9 @@
-## Cold-start Multi-hop Reasoning by Hierarchical-guidance and Self-verification
+## Cold-start Multi-hop Reasoning by Hierarchical Guidance and Self-verification
 
 This is the PyTorch implementation of of the **SelfHier** model for multi-hop reasoning.
 
 ## Overview
-We present **SelfHier**, which utilizes the **self**-verification and **hier**archical-guidance to conduct multi-hop reasoning. Here is an overview of our model architecture:
+We present **SelfHier**, which utilizes the **Self**-verification and **Hier**archical Guidance to conduct multi-hop reasoning. Here is an overview of our model architecture:
 
 ![](figs/model.png)
 
