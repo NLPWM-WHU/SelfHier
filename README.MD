@@ -40,5 +40,5 @@ python process_hierarchical_guidance --datapath 'data/NELL23K/'
 ```
 7、training SlefHier
 ```
-python train.py --cuda 0 --dataset NELL23K --batch-size 1024 --lr 5e-4 --dropout 0.1 --eval-begin 10 --num-epoch 100 --save-dir "model_4" --label-smooth 0.25 --encoder --save-interval 10 --l-punish --trainset "6_rev_rule" --prob 0.15 --beam-size 512 --test-batch-size 4
+python train.py --cuda 0 --dataset NELL23K --batch-size 1024 --lr 5e-4 --dropout 0.1 --eval-begin 50 --num-epoch 50 --save-dir "model_4" --label-smooth 0.25 --encoder --save-interval 50 --l-punish --trainset "6_rev_rule" --prob 0.15 --beam-size 512 --test-batch-size 4
 ```
