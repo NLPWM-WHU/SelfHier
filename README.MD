@@ -36,7 +36,7 @@ python train_transe_NELL23K.py
 ```
 6、Go `SelfHier-main/` folder
 ```
-python process_hierarchical_guidance --datapath 'data/NELL23K/'
+python process_hierarchical_guidance.py --datapath 'data/NELL23K/'
 ```
 7、Train SlefHier
 ```
