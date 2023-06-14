@@ -32,11 +32,11 @@ def get_args():
     parser.add_argument("--ckpt", default="ckpt-relation.pt")
     parser.add_argument("--dataset", default="FB15K237")
     parser.add_argument("--label-smooth", default=0.5, type=float) # 0.5
-    parser.add_argument("--l-punish", default=False, action="store_true") # during generation, add punishment for length
+    parser.add_argument("--l-punish", default=True, action="store_true") # during generation, add punishment for length
     parser.add_argument("--beam-size", default=128, type=int) # during generation, beam size
     parser.add_argument("--no-filter-gen", default=True, action="store_true") # during generation, not filter unreachable next token
     parser.add_argument("--test", default=False, action="store_true") # for test mode
-    parser.add_argument("--encoder", default=False, action="store_true") # only use TransformerEncoder
+    parser.add_argument("--encoder", default=True, action="store_true") # only use TransformerEncoder
     parser.add_argument("--trainset", default="6_rev_rule") # FB15K237: "6_rev", "60", "30_rev", FB15K237-10: "30", "30_rev"
     parser.add_argument("--loop", default=False, action="store_true") # add self-loop instead of <eos>
     parser.add_argument("--prob", default=0, type=float) # ratio of replaced token
@@ -1199,8 +1199,6 @@ def train(args):
                         cross_cluster_loss,_ = model_entity_cluster.get_cross_loss1(cluster_prob)
                     elif args.loss == 2:
                         cross_cluster_loss,_ = model_entity_cluster.get_cross_loss2(cluster_prob)
-                    elif args.loss == 3:
-                        cross_cluster_loss, _ = model_entity_cluster.get_cross_loss3(lengths, cluster_prob)
                     loss =  loss_entity + args.alpha * loss_cluster + args.gmma * cross_cluster_loss
                     loss.backward()
                     optimizer.step()
@@ -1240,8 +1238,6 @@ def train(args):
                         cross_relaiton_loss, _ = model_relation.get_cross_loss1(entity_prob)
                     elif args.loss == 2:
                         cross_relaiton_loss, _ = model_relation.get_cross_loss2(entity_prob)
-                    elif args.loss == 3:
-                        cross_relaiton_loss, _ = model_relation.get_cross_loss3(lengths, entity_prob)
                     loss =  loss_entity  + args.beta * loss_relation + args.theta * cross_relaiton_loss
                     loss.backward()
                     optimizer.step()
